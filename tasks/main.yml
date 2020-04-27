@@ -1,0 +1,15 @@
+- name: create .ssh directory
+  win_file:
+    path: "{{ win_authorized_keys_ssh_user_dir }}\\.ssh"
+    state: directory
+
+- name: create public_keys list
+  set_fact:
+    public_keys_list: "{{ public_keys_list | default([]) + [item.value] }}"
+  with_dict: "{{ public_keys }}"
+  no_log: true
+
+- name: copy authorized_keys file
+  win_copy:
+    content: "{{ public_keys_list | join('\n') }}"
+    dest: "{{ win_authorized_keys_ssh_user_dir }}\\.ssh\\authorized_keys"
