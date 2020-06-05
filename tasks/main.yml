@@ -14,7 +14,7 @@
 - name: create public_keys list
   set_fact:
     public_keys_list: "{{ public_keys_list | default([]) + [item.value] }}"
-  with_dict: "{{ public_keys }}"
+  with_dict: "{{ win_authorized_keys_public_keys }}"
   no_log: true
 
 - name: copy authorized_keys file
