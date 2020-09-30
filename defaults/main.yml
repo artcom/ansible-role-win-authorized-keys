@@ -1,4 +1,3 @@
-win_authorized_keys_ssh_user: "{{ ansible_user }}"
-win_authorized_keys_ssh_user_dir: "{{ ansible_user_dir }}"
-win_authorized_keys_public_keys:
-  operator: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+ssh_user: null
+ssh_user_dir: null
+public_keys: null

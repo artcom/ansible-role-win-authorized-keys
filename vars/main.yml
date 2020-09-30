@@ -1,0 +1,4 @@
+required_vars:
+  ssh_user: "{{ ssh_user }}"
+  ssh_user_dir: "{{ ssh_user_dir }}"
+  public_keys: "{{ public_keys }}"
