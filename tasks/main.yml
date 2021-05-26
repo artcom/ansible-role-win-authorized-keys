@@ -1,10 +1,10 @@
 - name: create .ssh directory
-  win_file:
+  ansible.windows.win_file:
     path: "{{ ssh_user_dir }}\\.ssh"
     state: directory
 
 - name: set .ssh directory permissions
-  win_acl:
+  ansible.windows.win_acl:
     user: "{{ ssh_user }}"
     path: "{{ ssh_user_dir }}\\.ssh"
     type: allow
@@ -12,12 +12,12 @@
     inherit: ContainerInherit, ObjectInherit
 
 - name: create public_keys list
-  set_fact:
+  ansible.builtin.set_fact:
     public_keys_list: "{{ public_keys_list | default([]) + [item.value] }}"
   with_dict: "{{ public_keys }}"
   no_log: true
 
 - name: copy authorized_keys file
-  win_copy:
+  ansible.windows.win_copy:
     content: "{{ public_keys_list | join('\n') }}"
     dest: "{{ ssh_user_dir }}\\.ssh\\authorized_keys"
