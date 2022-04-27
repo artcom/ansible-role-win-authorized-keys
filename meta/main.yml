@@ -3,7 +3,7 @@ galaxy_info:
   description: set authorized_keys on a Windows machine
   license: license (MIT)
 
-  min_ansible_version: 3.0
+  min_ansible_version: "3.0"
   platforms:
     - name: Windows
       versions:
